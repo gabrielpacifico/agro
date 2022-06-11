@@ -1,0 +1,1 @@
+Sistema desenvolvido inteiramente por @Gabriel Pacífico para atender as necessidades de produtores rurais em ter o controle de vacinação e reprodução de bovinos e caprinos.
