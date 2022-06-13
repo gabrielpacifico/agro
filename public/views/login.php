@@ -15,15 +15,34 @@
 </head>
 <body>
 
-    <header class="quadro-login">
-        <div class="login">
-            <h1 class="title-login">
-            <h2>Fazer Login</h2>
-            <label for="user" class="label-login">Nome de usuário</label>
-            <input type="text" name="user" class="input">
-            </h1>
+        <div class="main-login">
+            <div class="left-login">
+                <h1>Fazer login</h1>
+                <h1>teste agro</h1>
+                <img src="../img/planet.svg" class="img-left-login">
+            </div>
+
+    <form action="confirm-password.php" method="POST">    
+            <div class="right-login">
+                <div class="card-login">
+                    <h1>Faça Login</h1>
+                    <div class="text-field">
+                        <label for="usuario">Usuário</label>
+                        <input type="text" name="usuario" placeholder="Usuário">
+                    </div>
+                    <div class="text-field">
+                        <label for="senha">Senha</label>
+                        <input type="password" name="senha" placeholder="Senha">
+                    </div>
+                    <div class="text-field">
+                        <span>Esqueceu a <a href="forgot-password.php">senha?</a></span>
+                    </div>
+                    <button type="submit" class="btn-login">Entrar</button>
+                    <a href="fazer-cadastro.php" class="btn-cadastro">Cadastre-se</a>
+                </div>
+            </div>
         </div>
-    </header>
-    
+    </form>
+
 </body>
 </html>

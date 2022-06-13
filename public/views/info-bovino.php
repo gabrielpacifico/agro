@@ -1,8 +1,8 @@
 <?php
 include_once('../include/connect.php');
 
-$id = $_GET['id'];
-$ano = $_GET['ano'];
+$id = mysqli_real_escape_string($conexao, $_GET['id']);
+$ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
 ?>
 <!DOCTYPE html>
