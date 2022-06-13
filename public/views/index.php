@@ -26,7 +26,7 @@
         <h1 class="title">
             <span class="link-maior">Teste <span class="link-modified"> agro </span></span>
             <span class="link-menor">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi et quo necessitatibus. </span>
-            <a href="index.php" type="buttom" class="btn-transparent"> Acessar </a>
+            <a href="login.php" type="buttom" class="btn-transparent"> Acessar </a>
         </h1>
     </div>
 </header>
