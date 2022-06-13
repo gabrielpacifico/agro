@@ -12,7 +12,7 @@ $ano = $_GET['ano'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informações caprino</title>
+    <title>Informações bovino</title>
     <link rel="icon" type="image/x-icon" href="../img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
@@ -51,11 +51,11 @@ $ano = $_GET['ano'];
     ?>
 
     <div class="caprinos">
-        <h1 class="title-cap"> Informações do(a) caprino <strong><?= $ref_animal ?></strong></h1>
+        <h1 class="title-cap"> Informações do(a) bovino <strong><?= $ref_animal ?></strong></h1>
     </div>
     <h2 class="subtitle-cap">Ano de <?= $ano ?></h2>
 
-    <a href="caprinos.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
+    <a href="bovinos.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
 
     <section class="quadro">
         <div class="info">

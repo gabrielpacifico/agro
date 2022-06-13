@@ -16,7 +16,7 @@
     <!-- <img src="../img/logo.png" class="logo"> -->
     <h2 class="title-nav"> <a href="index.php" class="text-decoration"> Teste Agro </a> </h2>
     <ul class="ul-links">
-        <li class="link-item"> <a href="index.php" class="link"> Bovinos </a></li>
+        <li class="link-item"> <a href="bovinos.php" class="link"> Bovinos </a></li>
         <li class="link-item"> <a href="caprinos.php" class="link"> Caprinos </a></li>
     </ul>
 </nav>
@@ -26,7 +26,7 @@
         <h1 class="title">
             <span class="link-maior">Teste <span class="link-modified"> agro </span></span>
             <span class="link-menor">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi et quo necessitatibus. </span>
-            <a href="index.php" type="buttom" class="btn-transparent"> Acessar </a>
+            <a href="login.php" type="buttom" class="btn-transparent"> Acessar </a>
         </h1>
     </div>
 </header>
@@ -48,7 +48,7 @@
 </div>
 
 <footer class="footer">
-    <p class="text-footer">Todos os direitos reservados à Prática Informática | Desenvolvido por: &nbsp;<a href="https://www.instagram.com/gabriel_pacific/" class="link-copy" target="_blank"> @Gabriel Pacífico </a></p>
+    <p class="text-footer">Todos os direitos reservados à Prática Informática | Desenvolvido por: &nbsp;<a href="https://github.com/gabrielpacifico" class="link-copy" target="_blank"> @Gabriel Pacífico </a></p>
 </footer>
     
 </body>

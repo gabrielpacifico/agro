@@ -1,7 +1,14 @@
 <?php
 include_once('../include/connect.php');
-    
+$ano = $_GET['ano'];
+
 $ano_atual = date('Y');
+
+if($ano_atual == $ano){
+    $ano_pesquisado = $ano_atual;
+}else{
+    $ano_pesquisado = $ano;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -33,16 +40,16 @@ $ano_atual = date('Y');
     <div class="caprinos">
         <h1 class="title-cap"> Informações de todos os <strong>caprinos</strong></h1>
     </div>
-    <h2 class="subtitle-cap">Ano de <?= $ano_atual ?></h2>
+    <h2 class="subtitle-cap">Ano de <?= $ano_pesquisado ?></h2>
 
-    <a href="index.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
+    <a href="caprinos.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
 
     <!-- FILTROS DE ANO E ESPÉCIE -->
-    <form action="caprinos-filter.php" method="GET">
+    <!-- <form action="caprinos-filter.php" method="GET">
         <div class="filters">
             <span class="filter-span">Filtrar por: </span>
             <div class="year">
-                <select name="ano" class="options" required>
+                <select class="options">
                     <option value="" selected>Ano</option>
                     <option value="2022">2022</option>
                     <option value="2023">2023</option>
@@ -51,16 +58,16 @@ $ano_atual = date('Y');
                 </select>
             </div>
 
-            <!-- <div class="especie">
+            <div class="especie">
                 <select class="options">
                     <option value="" selected>Espécie</option>
                     <option value="Caprinos">Caprinos</option>
                     <option value="Bovinos">Bovinos</option>
                 </select>
-            </div> -->
+            </div>
             <button type="submit" class="btn-green">Filtrar</button>
     </form>
-    </div>
+    </div> -->
     <!-- FIM FILTROS -->
 
     <section class="table bootstrap-iso" id="table">
@@ -80,8 +87,9 @@ $ano_atual = date('Y');
 
                 $pag = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
 
-                $sql = "SELECT * FROM `$ano_atual` WHERE especie = 'Caprinos'";
+                $sql = "SELECT * FROM `$ano_pesquisado` WHERE especie = 'Caprinos'";
                 $buscar = mysqli_query($conexao, $sql);
+
 
                 /** Variável que vai definir quantos registros por página = 20 */
                 $reg_por_pag = "30";
@@ -115,7 +123,7 @@ $ano_atual = date('Y');
                     $reproducao = $loop['reproducao'];
 
                 ?>
-                    <tr onclick="location.href='info-caprino.php?id=<?= $id ?>&ano=<?= $ano_atual ?>'" class="link-table">
+                    <tr onclick="location.href='info-caprino.php?id=<?= $id ?>&ano=<?= $ano_pesquisado ?>'" class="link-table">
                         <th scope="row"> <?= $especie ?> </th>
                         <td> <?= $ref_animal ?> </td>
                         <td> <?= $vacina ?> </td>
