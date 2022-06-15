@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -22,17 +25,27 @@
                 <img src="../img/planet.svg" class="img-left-login">
             </div>
 
-    <form action="confirm-password.php" method="POST">    
+    <form action="login-authentication.php" method="POST">    
             <div class="right-login">
                 <div class="card-login">
-                    <h1>Faça Login</h1>
+                    <h1>Fazer Login</h1>
+                    <?php 
+                        if(isset($_SESSION['sem_autenticacao'])){
+                    ?>
+
+                        <span>Usuário ou senha inválidos, tente novamente!</span>
+
+                    <?php 
+                    }
+                    unset($_SESSION['sem_autenticacao'])
+                    ?>
                     <div class="text-field">
                         <label for="usuario">Usuário</label>
-                        <input type="text" name="usuario" placeholder="Usuário">
+                        <input type="text" name="user" placeholder="Usuário" autocomplete="off">
                     </div>
                     <div class="text-field">
                         <label for="senha">Senha</label>
-                        <input type="password" name="senha" placeholder="Senha">
+                        <input type="password" name="pass" placeholder="Senha" autocomplete="off">
                     </div>
                     <div class="text-field">
                         <span>Esqueceu a <a href="forgot-password.php">senha?</a></span>

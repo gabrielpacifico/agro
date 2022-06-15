@@ -25,7 +25,7 @@
     <div class="content">
         <h1 class="title">
             <span class="link-maior">Teste <span class="link-modified"> agro </span></span>
-            <span class="link-menor">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi et quo necessitatibus. </span>
+            <span class="link-menor">Clique e comece a cadastrar agora mesmo seus bovinos e caprinos. </span>
             <a href="login.php" type="buttom" class="btn-transparent"> Acessar </a>
         </h1>
     </div>

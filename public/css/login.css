@@ -141,6 +141,15 @@ a{
     cursor: pointer;
     box-shadow: 0px 10px 40px -12px #382156;
 }
+.card-login > span{ /* Alerta usuario ou senha invalidos */
+    background: #ec7d07;
+    color: white;
+    border-radius: 25px;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0px 10px 40px #00000056;
+}
 
 @media only screen and (max-width: 950px){
     .card-login{

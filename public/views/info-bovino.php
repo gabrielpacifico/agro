@@ -42,8 +42,29 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
         $especie = $array['especie'];
         $ref_animal = $array['ref_animal'];
         $vacina = $array['vacina'];
+        $vacina2 = $array['vacina2'];
+        $vacina3 = $array['vacina3'];
+        $vacina4 = $array['vacina4'];
+        $vacina5 = $array['vacina5'];
+        $vacina6 = $array['vacina6'];
+        $vacina7 = $array['vacina7'];
+        $vacina8 = $array['vacina8'];
         $data_vacina = $array['data_vacina'];
+        $data_vacina2 = $array['data_vacina2'];
+        $data_vacina3 = $array['data_vacina3'];
+        $data_vacina4 = $array['data_vacina4'];
+        $data_vacina5 = $array['data_vacina5'];
+        $data_vacina6 = $array['data_vacina6'];
+        $data_vacina7 = $array['data_vacina7'];
+        $data_vacina8 = $array['data_vacina8'];
         $data_vacina_convert = date('d/m/Y', strtotime($data_vacina));
+        $data_vacina2_convert = date('d/m/Y', strtotime($data_vacina2));
+        $data_vacina3_convert = date('d/m/Y', strtotime($data_vacina3));
+        $data_vacina4_convert = date('d/m/Y', strtotime($data_vacina4));
+        $data_vacina5_convert = date('d/m/Y', strtotime($data_vacina5));
+        $data_vacina6_convert = date('d/m/Y', strtotime($data_vacina6));
+        $data_vacina7_convert = date('d/m/Y', strtotime($data_vacina7));
+        $data_vacina8_convert = date('d/m/Y', strtotime($data_vacina8));
         $reproducao = $array['reproducao'];
         $observacao = $array['observacao'];
     
@@ -57,30 +78,163 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
     <a href="bovinos.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
 
-    <section class="quadro">
-        <div class="info">
+<!-- INFORMAÇÕES SOBRE O ANIMAL -->
+<header class="main">
+<section class="quadro">
             <span class="itens-info">Espécie: <?= $especie ?> </span>
             <span class="itens-info">Ref animal: <?= $ref_animal ?> </span>
-            <span class="itens-info">Vacina: <?= $vacina ?> </span>
-            <span class="itens-info">Data da vacina: <?= $data_vacina_convert ?> </span>
-            <span class="itens-info">Reprodução: 
-                <?php if($reproducao == NULL){
-                echo "Não reproduziu";
-                }else{
+            <span class="itens-info">Reprodução:
+                <?php if ($reproducao == NULL) {
+                    echo "Não reproduziu";
+                } else {
                     echo $reproducao;
-                } 
+                }
                 ?> </span>
-            <span class="itens-info">Observações sobre o animal: 
-                <?php if($observacao == NULL){
-                echo "<strong> Nenhuma observação sobre o animal</strong>.";
-                }else{
+            <span class="itens-info">Observações sobre o animal:
+                <?php if ($observacao == NULL) {
+                    echo "<strong> Nenhuma observação sobre o animal</strong>.";
+                } else {
                     echo $observacao;
-                } 
-            ?> </span>
-        </div>
-    </section>
+                }
+                ?> </span>
+        </section>
 
+<!-- INFORMAÇÕES VACINA 1 -->
 
+        <section class="quadro">
+            <div class="info">
+                <span class="itens-info"><strong>Primeira vacina</strong></span>
+                <span class="itens-info">Vacina: <?= $vacina ?> </span>
+                <span class="itens-info">Data da vacina: <?= $data_vacina_convert ?> </span>
+            </div>
+        </section>
+
+<!-- INFORMAÇÕES VACINA 2 -->
+
+        <?php
+
+        if ($vacina2 == NULL && $data_vacina2 == NULL) {
+            echo "";
+        } else {
+            echo "  
+            <section class='quadro'>
+                <div class='info'>
+                    <span><strong>Segunda vacina</strong></span>
+                    <span class='itens-info'>Vacina: $vacina2 </span>
+                    <span class='itens-info'>Data da vacina: $data_vacina2_convert </span>
+                </div>
+            </section>";
+        }
+        ?>
+
+<!-- INFORMAÇÕES VACINA 3 -->
+
+        <?php
+
+        if ($vacina3 == NULL && $data_vacina3 == NULL) {
+            echo "";
+        } else {
+            echo "  
+            <section class='quadro'>
+                <div class='info'>
+                    <span><strong>Terceira vacina</strong></span>
+                    <span class='itens-info'>Vacina: $vacina3 </span>
+                    <span class='itens-info'>Data da vacina: $data_vacina3_convert </span>
+                </div>
+            </section>";
+        }
+        ?>
+
+<!-- INFORMAÇÕES VACINA 4 -->
+
+        <?php
+
+        if ($vacina4 == NULL && $data_vacina4 == NULL) {
+            echo "";
+        } else {
+            echo "  
+            <section class='quadro'>
+                <div class='info'>
+                    <span><strong>Quarta vacina</strong></span>
+                    <span class='itens-info'>Vacina: $vacina4  </span>
+                    <span class='itens-info'>Data da vacina: $data_vacina4_convert </span>
+                </div>
+            </section>";
+        }
+        ?>
+
+<!-- INFORMAÇÕES VACINA 5 -->
+
+        <?php
+
+        if ($vacina5 == NULL && $data_vacina5 == NULL) {
+            echo "";
+        } else {
+            echo "  
+            <section class='quadro'>
+                <div class='info'>
+                    <span><strong>Quinta vacina</strong></span>
+                    <span class='itens-info'>Vacina: $vacina5 </span>
+                    <span class='itens-info'>Data da vacina: $data_vacina5_convert </span>
+                </div>
+            </section>";
+        }
+        ?>
+
+<!-- INFORMAÇÕES VACINA 6 -->
+
+        <?php
+
+        if ($vacina6 == NULL && $data_vacina6 == NULL) {
+            echo "";
+        } else {
+            echo "  
+            <section class='quadro'>
+                <div class='info'>
+                    <span><strong>Sexta vacina</strong></span>
+                    <span class='itens-info'>Vacina: $vacina6 </span>
+                    <span class='itens-info'>Data da vacina: $data_vacina6_convert </span>
+                </div>
+            </section>";
+        }
+        ?>
+
+<!-- INFORMAÇÕES VACINA 7 -->
+
+        <?php
+
+        if ($vacina7 == NULL && $data_vacina7 == NULL) {
+            echo "";
+        } else {
+            echo "  
+            <section class='quadro'>
+                <div class='info'>
+                    <span><strong>Sétima vacina</strong></span>
+                    <span class='itens-info'>Vacina: $vacina7 </span>
+                    <span class='itens-info'>Data da vacina: $data_vacina7_convert </span>
+                </div>
+            </section>";
+        }
+        ?>
+
+<!-- INFORMAÇÕES VACINA 8 -->
+
+        <?php
+
+        if ($vacina8 == NULL && $data_vacina8 == NULL) {
+            echo "";
+        } else {
+            echo "  
+            <section class='quadro'>
+                <div class='info'>
+                    <span><strong>Oitava vacina</strong></span>
+                    <span class='itens-info'>Vacina: $vacina8 </span>
+                    <span class='itens-info'>Data da vacina: $data_vacina8_convert </span>
+                </div>
+            </section>";
+        }
+        ?>
+</header>
 <?php } ?>
 </body>
 

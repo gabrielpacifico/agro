@@ -1,0 +1,22 @@
+#icon-user{
+    font-size: 12pt;
+    color: white;
+    background: rgb(195, 22, 22);
+    padding: 10px;
+    border-radius: 10px;
+}
+#icon-user:hover{
+    font-size: 12pt;
+    color: rgb(195, 22, 22);
+    background: white ;
+    padding: 10px;
+    border-radius: 10px;
+    transition: ease-in all 200ms;
+}
+.item-link{
+    padding: 10px;
+    color: white;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}

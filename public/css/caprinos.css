@@ -108,10 +108,13 @@ ul.pagination li a:hover:not(.active) {
     width: 90%;
     margin-left: 50px;
     margin-right: 50px;
-    align-items: center;
     display: flex;
+    flex-direction: column;
 }
 .itens-info{
     display: block;
     margin-top: 5px;
+}
+.main{
+    margin-bottom: 100px;
 }
