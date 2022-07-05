@@ -31,6 +31,7 @@ if($ano_atual == $ano){
     <nav class="navbar">
         <!-- <img src="../img/logo.png" class="logo"> -->
         <h2 class="title-nav"> <a href="index.php" class="text-decoration"> Teste Agro </a> </h2>
+<<<<<<< HEAD
         <div class="dropdown">
             <button class="dropbtn">Criações
                 <i class="fa fa-caret-down"></i>
@@ -41,6 +42,12 @@ if($ano_atual == $ano){
                 <a href="ovinos.php" id="item">Ovinos</a>
             </div>
         </div>
+=======
+        <ul class="ul-links">
+            <li class="link-item"> <a href="bovinos.php" class="link"> Bovinos </a></li>
+            <li class="link-item"> <a href="caprinos.php" class="link"> Caprinos </a></li>
+        </ul>
+>>>>>>> 425807c9509ea713df8196dcb3810973d16dc714
     </nav>
 
     <div class="caprinos">

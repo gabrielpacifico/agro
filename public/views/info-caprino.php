@@ -23,6 +23,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
 <body>
 
+<<<<<<< HEAD
     <nav class="navbar">    
         <!-- <img src="../img/logo.png" class="logo"> -->
         <h2 class="title-nav"> <a href="index.php" class="text-decoration"> Teste Agro </a> </h2>
@@ -36,6 +37,15 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
                 <a href="ovinos.php" id="item">Ovinos</a>
             </div>
         </div>
+=======
+    <nav class="navbar">
+        <!-- <img src="../img/logo.png" class="logo"> -->
+        <h2 class="title-nav"> <a href="index.php" class="text-decoration"> Teste Agro </a> </h2>
+        <ul class="ul-links">
+            <li class="link-item"> <a href="bovinos.php" class="link"> Bovinos </a></li>
+            <li class="link-item"> <a href="caprinos.php" class="link"> Caprinos </a></li>
+        </ul>
+>>>>>>> 425807c9509ea713df8196dcb3810973d16dc714
     </nav>
 
     <?php
