@@ -1,0 +1,65 @@
+.form-area{
+    margin-left: 5%;
+    margin-top: 20px;
+    margin-right: 5%;
+    width: 70%;
+}
+#input:focus {
+    box-shadow:none;
+    outline: none;
+ }
+.vacinas-cadastro{
+    font-size: 13pt;
+    font-weight: 500;
+    padding: 10px;
+    border: 1px solid #494949;
+    background: #e8e8e8;
+    border-radius: 10px;
+}
+.vac2{
+    display: none;
+}
+.vac2::after{
+    display: block;
+}
+.btn-send{
+    border: none;
+    background: #09bc45e3;
+    padding: 10px;
+    border-radius: 10px;
+}
+.margin-vac{
+    margin: 10px;
+}
+#hidden-vac2{
+    display: none;
+}
+#hidden-vac3{
+    display: none;
+}
+#hidden-vac4{
+    display: none;
+}
+#hidden-vac5{
+    display: none;
+}
+#hidden-vac6{
+    display: none;
+}
+#hidden-vac7{
+    display: none;
+}
+#hidden-vac8{
+    display: none;
+}
+.btn-hidden{
+    background: none;
+    border: none;
+    outline: 0;
+}
+
+ @media only screen and (max-width: 600px){
+    .form-area{
+        width: 100%;
+    }
+}

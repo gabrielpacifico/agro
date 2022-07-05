@@ -12,7 +12,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informações bovino</title>
+    <title>Informações ovino</title>
     <link rel="icon" type="image/x-icon" href="../img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
@@ -23,7 +23,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
 <body>
 
-    <nav class="navbar">
+    <nav class="navbar">    
         <!-- <img src="../img/logo.png" class="logo"> -->
         <h2 class="title-nav"> <a href="index.php" class="text-decoration"> Teste Agro </a> </h2>
         <div class="dropdown">
@@ -73,20 +73,20 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
         $data_vacina8_convert = date('d/m/Y', strtotime($data_vacina8));
         $reproducao = $array['reproducao'];
         $observacao = $array['observacao'];
-    
+
 
     ?>
 
-    <div class="caprinos">
-        <h1 class="title-cap"> Informações do(a) bovino <strong><?= $ref_animal ?></strong></h1>
-    </div>
-    <h2 class="subtitle-cap">Ano de <?= $ano ?></h2>
+        <div class="caprinos">
+            <h1 class="title-cap"> Informações do(a) ovino <strong><?= $ref_animal ?></strong></h1>
+        </div>
+        <h2 class="subtitle-cap">Ano de <?= $ano ?></h2>
 
-    <a href="bovinos.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
+        <a href="caprinos.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
 
 <!-- INFORMAÇÕES SOBRE O ANIMAL -->
 <header class="main">
-<section class="quadro">
+        <section class="quadro">
             <span class="itens-info">Espécie: <?= $especie ?> </span>
             <span class="itens-info">Ref animal: <?= $ref_animal ?> </span>
             <span class="itens-info">Reprodução:
@@ -240,8 +240,9 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
             </section>";
         }
         ?>
+        
 </header>
-<?php } ?>
+    <?php } ?>
 </body>
 
 </html>

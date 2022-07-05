@@ -10,7 +10,7 @@ $ano_atual = date('Y');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rebanho de bovinos</title>
+    <title>Criação de bovinos</title>
     <link rel="icon" type="image/x-icon" href="../img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
@@ -24,10 +24,16 @@ $ano_atual = date('Y');
     <nav class="navbar">
         <!-- <img src="../img/logo.png" class="logo"> -->
         <h2 class="title-nav"> <a href="index.php" class="text-decoration"> Teste Agro </a> </h2>
-        <ul class="ul-links">
-            <li class="link-item"> <a href="bovinos.php" class="link"> Bovinos </a></li>
-            <li class="link-item"> <a href="caprinos.php" class="link"> Caprinos </a></li>
-        </ul>
+        <div class="dropdown">
+            <button class="dropbtn">Criações
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="bovinos.php" id="item">Bovinos</a>
+                <a href="caprinos.php" id="item">Caprinos</a>
+                <a href="ovinos.php" id="item">Ovinos</a>
+            </div>
+        </div>
     </nav>
 
     <div class="caprinos">
@@ -48,6 +54,7 @@ $ano_atual = date('Y');
                     <option value="2023">2023</option>
                     <option value="2024">2024</option>
                     <option value="2025">2025</option>
+                    <option value="2026">2026</option>
                 </select>
             </div>
 
