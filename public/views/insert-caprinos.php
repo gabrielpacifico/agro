@@ -9,7 +9,7 @@ if (!isset($_SESSION['usuario'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="pt=BR">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
