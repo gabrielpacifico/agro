@@ -35,6 +35,15 @@ if (!isset($_SESSION['usuario'])) {
       <i class='bx bx-menu' id="btn"></i>
     </div>
     <ul class="nav-list">
+      
+      <li>
+        <a href="index.php">
+          <i class="fa-solid fa-house"></i>
+          <span class="links_name">Página Inicial</span>
+        </a>
+        <span class="tooltip">Página Inicial</span>
+      </li>
+
       <li>
         <a href="painel-cadastros.php">
           <i class='bx bx-grid-alt'></i>
@@ -44,7 +53,7 @@ if (!isset($_SESSION['usuario'])) {
       </li>
 
       <li>
-        <a href="#">
+        <a href="cadastro-caprinos.php">
           <i class="fa-solid fa-plus" id="icon-rotate"></i>
           <span class="links_name">Caprinos</span>
         </a>
@@ -52,7 +61,7 @@ if (!isset($_SESSION['usuario'])) {
       </li>
 
       <li>
-        <a href="#">
+        <a href="cadastro-bovinos.php">
           <i class="fa-solid fa-plus" id="icon-rotate"></i>
           <span class="links_name">Bovinos</span>
         </a>
@@ -60,7 +69,7 @@ if (!isset($_SESSION['usuario'])) {
       </li>
 
       <li>
-        <a href="#">
+        <a href="cadastro-ovinos.php">
           <i class="fa-solid fa-plus" id="icon-rotate"></i>
           <span class="links_name">Ovinos</span>
         </a>
@@ -68,7 +77,7 @@ if (!isset($_SESSION['usuario'])) {
       </li>
 
       <li>
-        <a href="#">
+        <a href="editar.php">
           <i class='bx bx-edit'></i>
           <span class="links_name">Editar</span>
         </a>
@@ -99,7 +108,7 @@ if (!isset($_SESSION['usuario'])) {
         </div>
       </a>
 
-      <a href="#">
+      <a href="cadastro-bovinos.php">
         <div class="quadro-cadastro2">
           <h1 class="title-quadro">Cadastrar Bovinos</h1>
           <p class="subtitle-quadro">Cadastre sua criação de vacas e bois</p>

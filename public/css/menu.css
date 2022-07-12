@@ -215,10 +215,11 @@
     margin-top: 50px;
     padding: 20px;
     background: #258510;
+    position: absolute;
 }
 
 .text-footer {
-    color: white;
+    color: #fff;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -226,6 +227,11 @@
 }
 
 .link-copy {
-    color: black;
+    color: #000;
+    text-decoration: none;
+}
+.link-copy:hover {
+    color: #fff;
+    transition: ease-in all 180ms;
     text-decoration: none;
 }

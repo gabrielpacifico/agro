@@ -1,3 +1,6 @@
+body#cadastro{
+    background: #e8e8e8;
+}
 .form-area{
     margin-left: 5%;
     margin-top: 20px;
@@ -22,40 +25,114 @@
 .vac2::after{
     display: block;
 }
-.btn-send{
+#btn-send{
     border: none;
     background: #09bc45e3;
     padding: 10px;
+    color: #000;
     border-radius: 10px;
+    -webkit-box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76); 
+    box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76);
+}
+#btn-send:hover{
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    transition: ease-in 200ms all;
+    -webkit-box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76); 
+    box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76);
+}
+#btn-back{
+    background: #0980bce3;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 12pt;
+    text-decoration: none;
+    margin-right: 10px;
+    -webkit-box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76); 
+    box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76);
+}
+#btn-back:hover{
+    background: #0980bce3;
+    color: #000;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: ease-in 200ms all;
+    margin-right: 10px;
+    -webkit-box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76); 
+    box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76);
 }
 .margin-vac{
     margin: 10px;
 }
-#hidden-vac2{
-    display: none;
+#accordion-oitavo{
+    margin-bottom: 20px;
 }
-#hidden-vac3{
-    display: none;
+.accordion-item{
+    margin-bottom: 10px;
 }
-#hidden-vac4{
-    display: none;
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;  
 }
-#hidden-vac5{
-    display: none;
+.btns-cadastro{
+    margin-top: 30px;
 }
-#hidden-vac6{
-    display: none;
+.alert{
+    background: #ec7d07;
+    color: white;
+    display: block;
+    width: 70%;
+    border-radius: 25px;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 5%;
+    box-shadow: 0px 10px 40px #00000056;
 }
-#hidden-vac7{
-    display: none;
+.cadastro-feito{
+    background: #159f2a;
+    color: white;
+    display: block;
+    width: 70%;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 5%;
+    box-shadow: 0px 10px 40px #70707056;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
-#hidden-vac8{
-    display: none;
+.cadastro-erro{
+    background: #b06c0d;
+    color: white;
+    display: block;
+    width: 70%;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 5%;
+    box-shadow: 0px 10px 40px #70707056;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
-.btn-hidden{
-    background: none;
+#voltar-cadastro{
+    background: #0980bce3;
+    margin-left: 5%;
+    color: #fff;
+    padding: 10px;
     border: none;
-    outline: 0;
+    outline: none;
+    border-radius: 10px;
+    font-size: 12pt;
+    text-decoration: none;
+    margin-right: 10px;
+    -webkit-box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76); 
+    box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76);
 }
 
  @media only screen and (max-width: 600px){

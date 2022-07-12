@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include_once('../include/connect.php');
@@ -15,7 +16,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Caprinos</title>
+    <title>Cadastro de Bovinos</title>
     <link rel="icon" type="image/x-icon" href="../img/favicon.png">
     <link rel="stylesheet" href="../css/cadastros.css">
     <link rel="stylesheet" href="../css/painel.css">
@@ -100,7 +101,7 @@ if (!isset($_SESSION['usuario'])) {
     </div>
 
     <section class="home-section">
-        <div class="text">Cadastro | <strong> Caprinos </strong> </div>
+        <div class="text">Cadastro | <strong> Bovinos </strong> </div>
 
         <?php
         if (isset($_SESSION['blank-spaces'])) {
@@ -125,11 +126,11 @@ if (!isset($_SESSION['usuario'])) {
         ?>
 
         <div class="form-area bootstrap-iso">
-            <form action="insert-caprinos.php" method="POST">
+            <form action="insert-bovinos.php" method="POST">
 
                 <div class="input-group mb-3">
                     <span class="input-group-text">Espécie</span>
-                    <input type="text" class="form-control" name="especie" value="Caprinos" id="input" readonly required>
+                    <input type="text" class="form-control" name="especie" value="Bovinos" id="input" readonly required>
                 </div>
 
                 <div class="input-group mb-3">

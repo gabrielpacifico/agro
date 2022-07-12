@@ -119,7 +119,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
         <?php
 
-        if ($vacina2 == NULL && $data_vacina2 == NULL) {
+        if ($vacina2 == NULL && ($data_vacina2 == "0000-00-00"  || $data_vacina2 == NULL )) {
             echo "";
         } else {
             echo "  
@@ -137,7 +137,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
         <?php
 
-        if ($vacina3 == NULL && $data_vacina3 == NULL) {
+        if ($vacina3 == NULL && ($data_vacina3 == "0000-00-00" || $data_vacina3 == NULL )) {
             echo "";
         } else {
             echo "  
@@ -155,7 +155,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
         <?php
 
-        if ($vacina4 == NULL && $data_vacina4 == NULL) {
+        if ($vacina4 == NULL && ($data_vacina4 == "0000-00-00" || $data_vacina4 == NULL )) {
             echo "";
         } else {
             echo "  
@@ -173,7 +173,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
         <?php
 
-        if ($vacina5 == NULL && $data_vacina5 == NULL) {
+        if ($vacina5 == NULL && ($data_vacina5 == "0000-00-00" || $data_vacina5 == NULL )) {
             echo "";
         } else {
             echo "  
@@ -191,7 +191,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
         <?php
 
-        if ($vacina6 == NULL && $data_vacina6 == NULL) {
+        if ($vacina6 == NULL && ($data_vacina6 == "0000-00-00" || $data_vacina6 == NULL )) {
             echo "";
         } else {
             echo "  
@@ -209,7 +209,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
         <?php
 
-        if ($vacina7 == NULL && $data_vacina7 == NULL) {
+        if ($vacina7 == NULL && ($data_vacina7 == "0000-00-00" || $data_vacina7 == NULL )) {
             echo "";
         } else {
             echo "  
@@ -227,7 +227,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
         <?php
 
-        if ($vacina8 == NULL && $data_vacina8 == NULL) {
+        if ($vacina8 == NULL && ($data_vacina8 == "0000-00-00" || $data_vacina8 == NULL )) {
             echo "";
         } else {
             echo "  
