@@ -115,7 +115,7 @@ if (!isset($_SESSION['usuario'])) {
         </div>
       </a>
 
-      <a href="#">
+      <a href="cadastro-ovinos.php">
         <div class="quadro-cadastro3">
           <h1 class="title-quadro">Cadastrar Ovinos</h1>
           <p class="subtitle-quadro">Cadastre seu rebanho de ovelhas e carneiros</p>
