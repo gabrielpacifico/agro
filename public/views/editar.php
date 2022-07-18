@@ -1,54 +1,127 @@
 <?php
+session_start();
 include_once('../include/connect.php');
-    
+
+$usuario = $_SESSION['usuario'];
+
+if (!isset($_SESSION['usuario'])) {
+    header('Location: login.php');
+}
 $ano_atual = date('Y');
 ?>
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt=BR">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criação de bovinos</title>
+    <title> Edição | Caprinos, Bovinos e Caprinos</title>
     <link rel="icon" type="image/x-icon" href="../img/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
-    <link rel="stylesheet" href="../bootstrap/bootstrap-iso.css">
+    <link rel="stylesheet" href="../css/edit.css">
+    <link rel="stylesheet" href="../css/cadastros.css">
+    <link rel="stylesheet" href="../css/painel.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/caprinos.css">
+    <link rel="stylesheet" href="../bootstrap/bootstrap-iso.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 
 <body>
 
-    <nav class="navbar">
-        <!-- <img src="../img/logo.png" class="logo"> -->
-        <h2 class="title-nav"> <a href="index.php" class="text-decoration"> Teste Agro </a> </h2>
-        <div class="dropdown">
-            <button class="dropbtn">Criações
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="bovinos.php" id="item">Bovinos</a>
-                <a href="caprinos.php" id="item">Caprinos</a>
-                <a href="ovinos.php" id="item">Ovinos</a>
-            </div>
+    <div class="sidebar">
+        <div class="logo-details">
+            <div class="logo_name"><a href="index.php" style="color: #fff"> Teste Agro </a></div>
+            <i class='bx bx-menu' id="btn"></i>
         </div>
-    </nav>
+        <ul class="nav-list">
 
-    <div class="caprinos">
-        <h1 class="title-cap"> Informações de todos os <strong>bovinos</strong></h1>
+            <li>
+                <a href="index.php">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="links_name">Página Inicial</span>
+                </a>
+                <span class="tooltip">Página Inicial</span>
+            </li>
+
+            <li>
+                <a href="painel-cadastros.php">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Painel de Cadastros</span>
+                </a>
+                <span class="tooltip">Painel de Cadastros</span>
+            </li>
+
+            <li>
+                <a href="cadastro-caprinos.php">
+                    <i class="fa-solid fa-plus" id="icon-rotate"></i>
+                    <span class="links_name">Caprinos</span>
+                </a>
+                <span class="tooltip">Caprinos</span>
+            </li>
+
+            <li>
+                <a href="cadastro-bovinos.php">
+                    <i class="fa-solid fa-plus" id="icon-rotate"></i>
+                    <span class="links_name">Bovinos</span>
+                </a>
+                <span class="tooltip">Bovinos</span>
+            </li>
+
+            <li>
+                <a href="cadastro-ovinos.php">
+                    <i class="fa-solid fa-plus" id="icon-rotate"></i>
+                    <span class="links_name">Ovinos</span>
+                </a>
+                <span class="tooltip">Ovinos</span>
+            </li>
+
+            <li>
+                <a href="editar.php">
+                    <i class='bx bx-edit'></i>
+                    <span class="links_name">Editar</span>
+                </a>
+                <span class="tooltip">Editar</span>
+            </li>
+
+            <li>
+            <li class="profile">
+                <div class="profile-details">
+                    <!--<img src="profile.jpg" alt="profileImg">-->
+                    <div class="name_job">
+                        <div class="name"><?= $usuario ?></div>
+                        <div class="job">Administrador</div>
+                    </div>
+                    <a href="logout.php"><i class='bx bx-log-out' id="log_out"></i></a>
+                </div>
+            </li>
+        </ul>
     </div>
-    <h2 class="subtitle-cap">Ano de <?= $ano_atual ?></h2>
 
-    <a href="index.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
+    <section class="home-section">
+        <div class="text">Edição | <strong> Caprinos, Bovinos e Ovinos </strong> </div>
 
-    <!-- FILTROS DE ANO E ESPÉCIE -->
-    <form action="bovinos-filter.php" method="GET">
-        <div class="filters">
+        <?php
+        if (isset($_SESSION['blank-spaces'])) {
+        ?>
+
+            <span class="alert-edit">Campos requiridos vazios, tente novamente!</span>
+
+        <?php
+        }
+        unset($_SESSION['blank-spaces'])
+        ?>
+        
+            <!-- FILTROS DE ANO E ESPÉCIE -->
+    <form action="edit-filter.php" method="GET">
+        <div class="filters-edit">
             <span class="filter-span">Filtrar por: </span>
             <div class="year">
-                <select name="ano" class="options" required>
+                <select name="ano" class="options">
                     <option value="" selected>Ano</option>
                     <option value="2022">2022</option>
                     <option value="2023">2023</option>
@@ -58,19 +131,20 @@ $ano_atual = date('Y');
                 </select>
             </div>
 
-            <!-- <div class="especie">
-                <select class="options">
+            <div class="especie">
+                <select name="especie" class="options">
                     <option value="" selected>Espécie</option>
                     <option value="Caprinos">Caprinos</option>
                     <option value="Bovinos">Bovinos</option>
+                    <option value="Ovinos">Ovinos</option>
                 </select>
-            </div> -->
+            </div>
             <button type="submit" class="btn-green">Filtrar</button>
     </form>
     </div>
     <!-- FIM FILTROS -->
 
-    <section class="table bootstrap-iso" id="table">
+        <section class="table bootstrap-iso" id="table">
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -87,7 +161,7 @@ $ano_atual = date('Y');
 
                 $pag = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
 
-                $sql = "SELECT * FROM `$ano_atual` WHERE especie = 'Bovinos'";
+                $sql = "SELECT * FROM `$ano_atual` ORDER BY data_vacina DESC";
                 $buscar = mysqli_query($conexao, $sql);
 
                 /** Variável que vai definir quantos registros por página = 20 */
@@ -122,7 +196,7 @@ $ano_atual = date('Y');
                     $reproducao = $loop['reproducao'];
 
                 ?>
-                    <tr onclick="location.href='info-bovino.php?id=<?= $id ?>&ano=<?=$ano_atual?>'" class="link-table">
+                    <tr onclick="location.href='info-caprino.php?id=<?= $id ?>&ano=<?= $ano_atual ?>'" class="link-table">
                         <th scope="row"> <?= $especie ?> </th>
                         <td> <?= $ref_animal ?> </td>
                         <td> <?= $vacina ?> </td>
@@ -172,11 +246,30 @@ $ano_atual = date('Y');
                 <?php } ?>
             </ul>
         </div>
-        <div class="total_registros">Bovinos cadastrados: <?=$total_registros?></div>
 
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let closeBtn = document.querySelector("#btn");
+
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+            menuBtnChange();
+        });
+
+
+        function menuBtnChange() {
+            if (sidebar.classList.contains("open")) {
+                closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+            } else {
+                closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+            }
+        }
+    </script>
+
 </body>
 
 </html>

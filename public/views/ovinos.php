@@ -44,7 +44,7 @@ $ano_atual = date('Y');
     <a href="index.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
 
     <!-- FILTROS DE ANO E ESPÉCIE -->
-    <form action="caprinos-filter.php" method="GET">
+    <form action="ovinos-filter.php" method="GET">
         <div class="filters">
             <span class="filter-span">Filtrar por: </span>
             <div class="year">
@@ -77,7 +77,7 @@ $ano_atual = date('Y');
                     <th scope="col">Espécie</th>
                     <th scope="col">Ref animal</th>
                     <th scope="col">Vacina</th>
-                    <th scope="col">Data da Vacina</th>
+                    <th scope="col">Data da 1ª Vacina</th>
                     <th scope="col">Reprodução</th>
                 </tr>
             </thead>

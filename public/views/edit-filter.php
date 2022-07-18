@@ -1,0 +1,117 @@
+<?php
+session_start();
+include_once('../include/connect.php');
+
+$usuario = $_SESSION['usuario'];
+
+if (!isset($_SESSION['usuario'])) {
+    header('Location: login.php');
+}
+$ano_atual = date('Y');
+?>
+<!DOCTYPE html>
+<html lang="pt=BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Filtro Edição | Caprinos, Bovinos e Caprinos</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
+    <link rel="stylesheet" href="../css/edit.css">
+    <link rel="stylesheet" href="../css/cadastros.css">
+    <link rel="stylesheet" href="../css/painel.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/caprinos.css">
+    <link rel="stylesheet" href="../bootstrap/bootstrap-iso.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo-details">
+            <div class="logo_name"><a href="index.php" style="color: #fff"> Teste Agro </a></div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+
+            <li>
+                <a href="index.php">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="links_name">Página Inicial</span>
+                </a>
+                <span class="tooltip">Página Inicial</span>
+            </li>
+
+            <li>
+                <a href="painel-cadastros.php">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Painel de Cadastros</span>
+                </a>
+                <span class="tooltip">Painel de Cadastros</span>
+            </li>
+
+            <li>
+                <a href="cadastro-caprinos.php">
+                    <i class="fa-solid fa-plus" id="icon-rotate"></i>
+                    <span class="links_name">Caprinos</span>
+                </a>
+                <span class="tooltip">Caprinos</span>
+            </li>
+
+            <li>
+                <a href="cadastro-bovinos.php">
+                    <i class="fa-solid fa-plus" id="icon-rotate"></i>
+                    <span class="links_name">Bovinos</span>
+                </a>
+                <span class="tooltip">Bovinos</span>
+            </li>
+
+            <li>
+                <a href="cadastro-ovinos.php">
+                    <i class="fa-solid fa-plus" id="icon-rotate"></i>
+                    <span class="links_name">Ovinos</span>
+                </a>
+                <span class="tooltip">Ovinos</span>
+            </li>
+
+            <li>
+                <a href="editar.php">
+                    <i class='bx bx-edit'></i>
+                    <span class="links_name">Editar</span>
+                </a>
+                <span class="tooltip">Editar</span>
+            </li>
+
+            <li>
+            <li class="profile">
+                <div class="profile-details">
+                    <!--<img src="profile.jpg" alt="profileImg">-->
+                    <div class="name_job">
+                        <div class="name"><?= $usuario ?></div>
+                        <div class="job">Administrador</div>
+                    </div>
+                    <a href="logout.php"><i class='bx bx-log-out' id="log_out"></i></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+<?php 
+
+$ano = mysqli_real_escape_string($conexao, $_GET['ano']);
+$especie = mysqli_real_escape_string($conexao, $_GET['especie']);
+
+
+if (empty($ano) || empty($especie)) {
+    header('Location: editar.php');
+    $_SESSION['blank-spaces'] = true;
+    exit();
+}else{
+
+}
+?>

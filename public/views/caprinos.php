@@ -77,7 +77,7 @@ $ano_atual = date('Y');
                     <th scope="col">Espécie</th>
                     <th scope="col">Ref animal</th>
                     <th scope="col">Vacina</th>
-                    <th scope="col">Data da Vacina</th>
+                    <th scope="col">Data da 1ª Vacina</th>
                     <th scope="col">Reprodução</th>
                 </tr>
             </thead>
