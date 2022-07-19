@@ -140,8 +140,8 @@ $ano_atual = date('Y');
                 </select>
             </div>
             <button type="submit" class="btn-green">Filtrar</button>
+        </div>
     </form>
-    </div>
     <!-- FIM FILTROS -->
 
         <section class="table bootstrap-iso" id="table">
@@ -196,7 +196,7 @@ $ano_atual = date('Y');
                     $reproducao = $loop['reproducao'];
 
                 ?>
-                    <tr onclick="location.href='info-caprino.php?id=<?= $id ?>&ano=<?= $ano_atual ?>'" class="link-table">
+                    <tr onclick="location.href='editar-especie.php?id=<?= $id ?>&ano=<?= $ano_atual ?>'" class="link-table">
                         <th scope="row"> <?= $especie ?> </th>
                         <td> <?= $ref_animal ?> </td>
                         <td> <?= $vacina ?> </td>
@@ -246,7 +246,8 @@ $ano_atual = date('Y');
                 <?php } ?>
             </ul>
         </div>
-
+        
+        <div class="total_registros">Registros encontrados: <?=$total_registros?></div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>

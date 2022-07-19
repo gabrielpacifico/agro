@@ -101,17 +101,157 @@ $ano_atual = date('Y');
             </li>
         </ul>
     </div>
-<?php 
 
-$ano = mysqli_real_escape_string($conexao, $_GET['ano']);
-$especie = mysqli_real_escape_string($conexao, $_GET['especie']);
+    <section class="home-section">
+
+        <?php
+
+        $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
+        $especie = mysqli_real_escape_string($conexao, $_GET['especie']);
 
 
-if (empty($ano) || empty($especie)) {
-    header('Location: editar.php');
-    $_SESSION['blank-spaces'] = true;
-    exit();
-}else{
+        if (empty($ano) && empty($especie)) {
+            header('Location: editar.php');
+            $_SESSION['blank-spaces'] = true;
+            exit();
+        } else {
 
-}
-?>
+            $pag = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
+
+            $sql = "SELECT * FROM `$ano` WHERE especie = '$especie' ORDER BY data_vacina DESC";
+            $buscar = mysqli_query($conexao, $sql);
+
+            /** Variável que vai definir quantos registros por página = 20 */
+            $reg_por_pag = "30";
+
+            $total_registros = mysqli_num_rows($buscar);
+            $total_paginas = ceil($total_registros / $reg_por_pag);
+
+            /** Define a página que sempre vai começar sendo exibida, no caso sempre a primeira */
+            $inicio = ($reg_por_pag * $pag) - $reg_por_pag;
+
+            /** Vai definir o limite de registros que irão ser exibidos */
+            $limite = mysqli_query($conexao, "$sql LIMIT $inicio, $reg_por_pag");
+
+            $links_laterais = 5;
+
+            // variáveis para o loop
+            $inicio2 = $pag - $links_laterais;
+            $limite2 = $pag + $links_laterais;
+
+            /** Variáveis para os botões de próximo e anterior */
+            $anterior = $pag - 1;
+            $proximo = $pag + 1;
+            
+        }
+
+        ?>
+
+        <div class="text">Edição <i class="fa-solid fa-magnifying-glass"></i> <strong> <?= $especie ?> | <?= $ano ?></strong> </div><br>
+
+        <section class="table bootstrap-iso" id="table">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Espécie</th>
+                        <th scope="col">Ref animal</th>
+                        <th scope="col">Vacina</th>
+                        <th scope="col">Data da 1ª Vacina</th>
+                        <th scope="col">Reprodução</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+
+                    while ($loop = mysqli_fetch_assoc($limite)) {
+                        $id = $loop['id'];
+                        $especie = $loop['especie'];
+                        $ref_animal = $loop['ref_animal'];
+                        $vacina = $loop['vacina'];
+                        $data_vacina = $loop['data_vacina'];
+                        $data_vacina_convert = date('d/m/Y', strtotime($data_vacina));
+                        $reproducao = $loop['reproducao'];
+
+                    ?>
+
+                        <tr onclick="location.href='editar-especie.php?id=<?= $id ?>&ano=<?= $ano_atual ?>'" class="link-table">
+                            <th scope="row"> <?= $especie ?> </th>
+                            <td> <?= $ref_animal ?> </td>
+                            <td> <?= $vacina ?> </td>
+                            <td> <?= $data_vacina_convert ?> </td>
+                            <td> <?php if ($reproducao == NULL) {
+                                        echo "Não reproduziu";
+                                    } else {
+                                        echo $reproducao;
+                                    } ?> </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+
+            <div class="pagination">
+            <ul class="pagination">
+                <?php
+                if ($pag > 1) {
+
+                ?>
+                    <li>
+                        <a href="?pagina=<?php echo $anterior; ?>"><i class="fa-solid fa-angles-left"></i></a>
+                    </li>
+                <?php } ?>
+
+
+                <?php
+                for ($i = $inicio2; $i <= $limite2; $i++) {
+                    if ($i == $pag) {
+                        echo "<li><a class='active' href='?pagina=$i'>$i</a></li>";
+                    } else {
+                        if ($i >= 1 && $i <= $total_paginas) {
+                            echo "<li><a href='?pagina=$i'>$i</a></li>";
+                        }
+                    }
+                }
+                ?>
+
+
+                <?php
+                if ($pag < $total_paginas) {
+
+                ?>
+                    <li>
+                        <a href="?pagina=<?php echo $proximo; ?>"><i class="fa-solid fa-angles-right"></i></a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+
+        <div class="total_registros">Registros encontrados: <?=$total_registros?></div>
+    </section>
+    <br>
+    <a href="editar.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
+
+    </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            let sidebar = document.querySelector(".sidebar");
+            let closeBtn = document.querySelector("#btn");
+
+            closeBtn.addEventListener("click", () => {
+                sidebar.classList.toggle("open");
+                menuBtnChange();
+            });
+
+
+            function menuBtnChange() {
+                if (sidebar.classList.contains("open")) {
+                    closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+                } else {
+                    closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+                }
+            }
+        </script>
+</body>
+
+</html>
