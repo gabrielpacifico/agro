@@ -130,7 +130,7 @@ $ano_atual = date('Y');
                         <td> <?php if($reproducao == NULL){
                             echo "Não reproduziu";
                         }else{
-                            echo $reproducao;
+                            echo $reproducao . " filhotes";
                         } ?> </td>
                     </tr>
                 <?php } ?>

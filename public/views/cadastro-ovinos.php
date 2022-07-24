@@ -320,7 +320,7 @@ if (!isset($_SESSION['usuario'])) {
                     </div>
 
                     <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Observações" name="observacao"></textarea>
+                        <input type="text" class="form-control" placeholder="Observações" name="observacao"></input>
                         <label for="floatingTextarea">Observações</label>
                     </div>
 

@@ -2,12 +2,25 @@
 session_start();
 include_once('../include/connect.php');
 
+$ano = mysqli_real_escape_string($conexao, $_GET['ano']);
+$especie = mysqli_real_escape_string($conexao, $_GET['especie']);
+
 $usuario = $_SESSION['usuario'];
 
 if (!isset($_SESSION['usuario'])) {
     header('Location: login.php');
 }
 $ano_atual = date('Y');
+
+if (empty($ano)) {
+    $ano = $ano_atual;
+}
+
+if ($ano_atual == $ano) {
+    $ano_pesquisado = $ano_atual;
+} else {
+    $ano_pesquisado = $ano;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt=BR">
@@ -106,10 +119,6 @@ $ano_atual = date('Y');
 
         <?php
 
-        $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
-        $especie = mysqli_real_escape_string($conexao, $_GET['especie']);
-
-
         if (empty($ano) && empty($especie)) {
             header('Location: editar.php');
             $_SESSION['blank-spaces'] = true;
@@ -118,36 +127,62 @@ $ano_atual = date('Y');
 
             $pag = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
 
-            $sql = "SELECT * FROM `$ano` WHERE especie = '$especie' ORDER BY data_vacina DESC";
-            $buscar = mysqli_query($conexao, $sql);
+            if (empty($especie)) {
+                $change_sql = "SELECT * FROM `$ano_pesquisado` ORDER BY data_vacina DESC";
+                $buscar = mysqli_query($conexao, $change_sql) or die(mysqli_error($conexao));
 
-            /** Variável que vai definir quantos registros por página = 20 */
-            $reg_por_pag = "30";
+                /** Variável que vai definir quantos registros por página = 20 */
+                $reg_por_pag = "30";
 
-            $total_registros = mysqli_num_rows($buscar);
-            $total_paginas = ceil($total_registros / $reg_por_pag);
+                $total_registros = mysqli_num_rows($buscar);
+                $total_paginas = ceil($total_registros / $reg_por_pag);
 
-            /** Define a página que sempre vai começar sendo exibida, no caso sempre a primeira */
-            $inicio = ($reg_por_pag * $pag) - $reg_por_pag;
+                /** Define a página que sempre vai começar sendo exibida, no caso sempre a primeira */
+                $inicio = ($reg_por_pag * $pag) - $reg_por_pag;
 
-            /** Vai definir o limite de registros que irão ser exibidos */
-            $limite = mysqli_query($conexao, "$sql LIMIT $inicio, $reg_por_pag");
+                $links_laterais = 5;
 
-            $links_laterais = 5;
+                // variáveis para o loop
+                $inicio2 = $pag - $links_laterais;
+                $limite2 = $pag + $links_laterais;
 
-            // variáveis para o loop
-            $inicio2 = $pag - $links_laterais;
-            $limite2 = $pag + $links_laterais;
+                /** Variáveis para os botões de próximo e anterior */
+                $anterior = $pag - 1;
+                $proximo = $pag + 1;
 
-            /** Variáveis para os botões de próximo e anterior */
-            $anterior = $pag - 1;
-            $proximo = $pag + 1;
-            
+                /** Vai definir o limite de registros que irão ser exibidos */
+                $limite = mysqli_query($conexao, "$change_sql LIMIT $inicio, $reg_por_pag");
+            } else {
+                $sql = "SELECT * FROM `$ano_pesquisado` WHERE especie = '$especie' ORDER BY data_vacina DESC";
+                $buscar = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+                /** Variável que vai definir quantos registros por página = 20 */
+                $reg_por_pag = "30";
+
+                $total_registros = mysqli_num_rows($buscar);
+                $total_paginas = ceil($total_registros / $reg_por_pag);
+
+                /** Define a página que sempre vai começar sendo exibida, no caso sempre a primeira */
+                $inicio = ($reg_por_pag * $pag) - $reg_por_pag;
+
+                $links_laterais = 5;
+
+                // variáveis para o loop
+                $inicio2 = $pag - $links_laterais;
+                $limite2 = $pag + $links_laterais;
+
+                /** Variáveis para os botões de próximo e anterior */
+                $anterior = $pag - 1;
+                $proximo = $pag + 1;
+
+                /** Vai definir o limite de registros que irão ser exibidos */
+                $limite = mysqli_query($conexao, "$sql LIMIT $inicio, $reg_por_pag");
+            }
         }
 
         ?>
 
-        <div class="text">Edição <i class="fa-solid fa-magnifying-glass"></i> <strong> <?= $especie ?> | <?= $ano ?></strong> </div><br>
+        <div class="text">Edição <i class="fa-solid fa-magnifying-glass"></i> <strong> <?= $especie ?> - <?= $ano_pesquisado ?></strong> </div><br>
 
         <section class="table bootstrap-iso" id="table">
             <table class="table table-hover">
@@ -182,7 +217,7 @@ $ano_atual = date('Y');
                             <td> <?php if ($reproducao == NULL) {
                                         echo "Não reproduziu";
                                     } else {
-                                        echo $reproducao;
+                                        echo $reproducao . " filhotes";
                                     } ?> </td>
                         </tr>
                     <?php } ?>
@@ -190,68 +225,68 @@ $ano_atual = date('Y');
             </table>
 
             <div class="pagination">
-            <ul class="pagination">
-                <?php
-                if ($pag > 1) {
+                <ul class="pagination">
+                    <?php
+                    if ($pag > 1) {
 
-                ?>
-                    <li>
-                        <a href="?pagina=<?php echo $anterior; ?>"><i class="fa-solid fa-angles-left"></i></a>
-                    </li>
-                <?php } ?>
+                    ?>
+                        <li>
+                            <a href="?pagina=<?php echo $anterior; ?>"><i class="fa-solid fa-angles-left"></i></a>
+                        </li>
+                    <?php } ?>
 
 
-                <?php
-                for ($i = $inicio2; $i <= $limite2; $i++) {
-                    if ($i == $pag) {
-                        echo "<li><a class='active' href='?pagina=$i'>$i</a></li>";
-                    } else {
-                        if ($i >= 1 && $i <= $total_paginas) {
-                            echo "<li><a href='?pagina=$i'>$i</a></li>";
+                    <?php
+                    for ($i = $inicio2; $i <= $limite2; $i++) {
+                        if ($i == $pag) {
+                            echo "<li><a class='active' href='?pagina=$i'>$i</a></li>";
+                        } else {
+                            if ($i >= 1 && $i <= $total_paginas) {
+                                echo "<li><a href='?pagina=$i'>$i</a></li>";
+                            }
                         }
                     }
-                }
-                ?>
+                    ?>
 
 
-                <?php
-                if ($pag < $total_paginas) {
+                    <?php
+                    if ($pag < $total_paginas) {
 
-                ?>
-                    <li>
-                        <a href="?pagina=<?php echo $proximo; ?>"><i class="fa-solid fa-angles-right"></i></a>
-                    </li>
-                <?php } ?>
-            </ul>
-        </div>
+                    ?>
+                        <li>
+                            <a href="?pagina=<?php echo $proximo; ?>"><i class="fa-solid fa-angles-right"></i></a>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </div>
 
-        <div class="total_registros">Registros encontrados: <?=$total_registros?></div>
+            <div class="total_registros">Registros encontrados: <?= $total_registros ?></div>
+        </section>
+        <br>
+        <a href="editar.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
+
     </section>
-    <br>
-    <a href="editar.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
 
-    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let closeBtn = document.querySelector("#btn");
 
-        <script>
-            let sidebar = document.querySelector(".sidebar");
-            let closeBtn = document.querySelector("#btn");
-
-            closeBtn.addEventListener("click", () => {
-                sidebar.classList.toggle("open");
-                menuBtnChange();
-            });
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+            menuBtnChange();
+        });
 
 
-            function menuBtnChange() {
-                if (sidebar.classList.contains("open")) {
-                    closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-                } else {
-                    closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-                }
+        function menuBtnChange() {
+            if (sidebar.classList.contains("open")) {
+                closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+            } else {
+                closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
             }
-        </script>
+        }
+    </script>
 </body>
 
 </html>

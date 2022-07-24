@@ -137,7 +137,7 @@ if($ano_atual == $ano){
                         <td> <?php if($reproducao == NULL){
                             echo "Não reproduziu";
                         }else{
-                            echo $reproducao;
+                            echo $reproducao . " filhotes";
                         } ?> </td>
                     </tr>
                 <?php } ?>

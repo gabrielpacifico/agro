@@ -25,8 +25,9 @@ body#cadastro{
 .vac2::after{
     display: block;
 }
-#btn-send{
+#btn-send-edit{
     border: none;
+    float: right;
     background: #09bc45e3;
     padding: 10px;
     color: #000;
@@ -34,7 +35,7 @@ body#cadastro{
     -webkit-box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76); 
     box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76);
 }
-#btn-send:hover{
+#btn-send-edit:hover{
     border: none;
     color: #fff;
     padding: 10px;
@@ -58,6 +59,42 @@ body#cadastro{
 }
 #btn-back:hover{
     background: #0980bce3;
+    color: #000;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: ease-in 200ms all;
+    margin-right: 10px;
+    -webkit-box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76); 
+    box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76);
+}
+#btn-back:hover{
+    background: #0980bce3;
+    color: #000;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: ease-in 200ms all;
+    margin-right: 10px;
+    -webkit-box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76); 
+    box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76);
+}
+#btn-remove{
+    background: #bc1e09e3;
+    color: #fff;
+    float: right    ;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 12pt;
+    text-decoration: none;
+    margin-right: 10px;
+    -webkit-box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76); 
+    box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76);
+}
+#btn-remove:hover{
+    background: #bc1e09e3;
     color: #000;
     padding: 10px;
     border-radius: 10px;

@@ -103,7 +103,7 @@ $ano_atual = date('Y');
     </div>
 
     <section class="home-section">
-        <div class="text">Edição | <strong> Caprinos, Bovinos e Ovinos </strong> </div>
+        <div class="text">Edição | <strong> Caprinos, Bovinos e Ovinos </strong>- <?= $ano_atual ?> </div>
 
         <?php
         if (isset($_SESSION['blank-spaces'])) {
@@ -204,7 +204,7 @@ $ano_atual = date('Y');
                         <td> <?php if($reproducao == NULL){
                             echo "Não reproduziu";
                         }else{
-                            echo $reproducao;
+                            echo $reproducao . " filhotes";
                         } ?> </td>
                     </tr>
                 <?php } ?>
