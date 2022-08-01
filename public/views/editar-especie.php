@@ -10,6 +10,7 @@ if (!isset($_SESSION['usuario'])) {
 
 $id = mysqli_real_escape_string($conexao, $_GET['id']);
 $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -18,7 +19,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edição ########</title>
+    <title> Edição | Caprinos, Bovinos e Caprinos </title>
     <link rel="icon" type="image/x-icon" href="../img/favicon.png">
     <link rel="stylesheet" href="../css/cadastros.css">
     <link rel="stylesheet" href="../css/painel.css">
@@ -169,6 +170,8 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
         <div class="form-area bootstrap-iso">
             <form action="edit-complete.php" method="POST">
+
+                    <input type="text" class="form-control" name="id" value="<?= $id ?>" id="input" style="display: none;" readonly required>
 
                 <div class="input-group mb-3">
                     <span class="input-group-text">Espécie</span>
