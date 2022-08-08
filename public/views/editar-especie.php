@@ -26,6 +26,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/caprinos.css">
     <link rel="stylesheet" href="../bootstrap/bootstrap-iso.css">
+    <link rel="stylesheet" href="../css/edit.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap" rel="stylesheet">
@@ -187,8 +188,8 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
                     <span class="input-group-text" id="basic-addon1">Sexo</span>
                     <select name="sexo" class="form-select" autocomplete="off" id="input" required>
                         <option <?=($sexo == '')?'selected':''?> > Sexo </option>
-                        <option <?=($sexo == 'Macho')?'selected':''?> > Macho </option>
-                        <option <?=($sexo == 'Femea')?'selected':''?> > Fêmea </option>
+                        <option <?=($sexo == 'Macho')?'selected': ''?> > Macho </option>
+                        <option <?=($sexo == 'Femea')?'selected': ''?> > Fêmea </option>
                     </select>
                 </div>
 
@@ -373,7 +374,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
                 <div class="btns-cadastro">
                     <button type="button" onclick="window.location.href='painel-cadastros.php'" id="btn-back">Voltar</button>
-                    <button type="submit" id="btn-send-edit"> Concluir </button>
+                    <button type="submit" id="btn-send-edit" onclick="return confirm('Tem certeza que quer editar <?= $ref_animal ?>?')"> Concluir </button>
                     <button type="button" onclick="window.location.href='remove-especie.php?id=<?= $id ?>&ano=<?= $ano_atual ?>'" id="btn-remove">Excluir</button>
                 </div>
             </form>
