@@ -410,6 +410,7 @@ if (!isset($_SESSION['usuario'])) {
         } else {
         ?>
             <div class="text"> Edição não concluída, tente novamente! <i class="fa-solid fa-circle-xmark" style="color: #c51515;"></i></div>
+            <button type="button" onclick="window.location.href='editar.php'" id="btn-back2">Voltar</button>
         <?php
         }
         ?>

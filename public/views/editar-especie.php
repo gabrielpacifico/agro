@@ -371,15 +371,15 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
                     </div>
 
                 </div>
+                <?php } ?>
 
                 <div class="btns-cadastro">
-                    <button type="button" onclick="window.location.href='painel-cadastros.php'" id="btn-back">Voltar</button>
+                    <button type="button" onclick="window.location.href='editar.php'" id="btn-back">Voltar</button>
                     <button type="submit" id="btn-send-edit" onclick="return confirm('Tem certeza que quer editar <?= $ref_animal ?>?')"> Concluir </button>
-                    <button type="button" onclick="window.location.href='remove-especie.php?id=<?= $id ?>&ano=<?= $ano_atual ?>'" id="btn-remove">Excluir</button>
+                    <button type="button" onclick="window.location.href='remove-especie.php?id=<?= $id ?>&ano=<?= $ano ?>'" id="btn-remove">Excluir</button>
                 </div>
             </form>
         </div>
-<?php } ?>
     </section>
 
     <footer class="footer">

@@ -28,6 +28,7 @@
     text-decoration: none;
     margin-top: 30px;
     margin-right: 10px;
+    cursor: pointer;
     -webkit-box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76); 
     box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76);
 }
@@ -40,6 +41,7 @@
     margin-top: 30px;
     transition: ease-in 200ms all;
     margin-right: 10px;
+    cursor: pointer;
     -webkit-box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76); 
     box-shadow: 0px 4px 22px -4px rgba(0,0,0,0.76);
 
@@ -58,4 +60,16 @@
 .text-check{
     font-weight: 500;
     margin-top: 8px;
+}
+.options2{
+    border-radius: 5px;
+    padding: 5px;
+    background: rgba(187, 187, 187, 0.66);
+    border: 1px solid #1d1d1d;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.ref-animal{
+    display: flex;
+    float: right;
 }

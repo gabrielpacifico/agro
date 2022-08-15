@@ -21,7 +21,7 @@ session_start();
         <div class="main-login">
             <div class="left-login">
                 <h1>Fazer login</h1>
-                <h1>teste agro</h1>
+                <h1>Teste agro</h1>
                 <img src="../img/planet.svg" class="img-left-login">
             </div>
 
