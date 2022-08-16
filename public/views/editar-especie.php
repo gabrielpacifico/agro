@@ -9,7 +9,7 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 $id = mysqli_real_escape_string($conexao, $_GET['id']);
-$ano = mysqli_real_escape_string($conexao, $_GET['ano']);
+$ref_animal = mysqli_real_escape_string($conexao, $_GET['ref_animal']);
 
 ?>
 <!DOCTYPE html>
@@ -106,7 +106,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
     <?php
 
-    $codesql = "SELECT * FROM `$ano` WHERE id = '$id'";
+    $codesql = "SELECT * FROM animais WHERE id = '$id'";
     $res = mysqli_query($conexao, $codesql) or die(mysqli_error($conexao));
 
     while ($array = mysqli_fetch_assoc($res)) {
@@ -376,7 +376,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
                 <div class="btns-cadastro">
                     <button type="button" onclick="window.location.href='editar.php'" id="btn-back">Voltar</button>
                     <button type="submit" id="btn-send-edit" onclick="return confirm('Tem certeza que quer editar <?= $ref_animal ?>?')"> Concluir </button>
-                    <button type="button" onclick="window.location.href='remove-especie.php?id=<?= $id ?>&ano=<?= $ano ?>'" id="btn-remove">Excluir</button>
+                    <button type="button" onclick="window.location.href='remove-especie.php?id=<?= $id ?>&ref_animal=<?= $ref_animal ?>'" id="btn-remove">Excluir</button>
                 </div>
             </form>
         </div>

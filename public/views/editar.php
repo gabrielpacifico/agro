@@ -7,7 +7,7 @@ $usuario = $_SESSION['usuario'];
 if (!isset($_SESSION['usuario'])) {
     header('Location: login.php');
 }
-$ano_atual = date('Y');
+
 ?>
 <!DOCTYPE html>
 <html lang="pt=BR">
@@ -103,7 +103,7 @@ $ano_atual = date('Y');
     </div>
 
     <section class="home-section">
-        <div class="text">Edição | <strong> Caprinos, Bovinos e Ovinos </strong>- <?= $ano_atual ?> </div>
+        <div class="text">Edição | <strong> Caprinos, Bovinos e Ovinos </div>
 
         <?php
         if (isset($_SESSION['blank-spaces'])) {
@@ -117,43 +117,45 @@ $ano_atual = date('Y');
         ?>
 
         <!-- FILTROS DE ANO E ESPÉCIE -->
-        <form action="edit-filter.php" method="GET">
+        <form action="buscar-ref.php" method="GET">
             <div class="filters-edit">
-                <span class="filter-span">Filtrar por: </span>
-                <div class="year">
-                    <select name="ano" class="options">
-                        <option value="" selected>Ano</option>
-                        <option value="2022">2022</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                        <option value="2025">2025</option>
-                        <option value="2026">2026</option>
-                    </select>
-                </div>
+                <span class="filter-span">Ref. Animal: </span>
+                <input type="text" placeholder="Ref. Animal" name="ref_animal" class="options2" autocomplete="off">
+                <button type="submit" class="btn-green">Pesquisar</button>
+        </form>
 
-                <div class="especie">
-                    <select name="especie" class="options">
-                        <option value="" selected>Espécie</option>
-                        <option value="Caprinos">Caprinos</option>
-                        <option value="Bovinos">Bovinos</option>
-                        <option value="Ovinos">Ovinos</option>
-                    </select>
-                </div>
+        <form action="edit-filter.php" method="GET">
+            <div class="filter">
+                <span class="filter-span">Filtrar por: </span>
+
+                <select name="ano" class="options">
+                    <option value="" selected>Ano</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                </select>
+
+                <select name="especie" class="options">
+                    <option value="" selected>Espécie</option>
+                    <option value="Caprinos">Caprinos</option>
+                    <option value="Bovinos">Bovinos</option>
+                    <option value="Ovinos">Ovinos</option>
+                </select>
+
                 <button type="submit" class="btn-green">Filtrar</button>
             </div>
-
         </form>
 
-        <form action="">
-            <div class="ref-animal">
-                <input type="text" placeholder="Ref. Animal" class="options2">
-            </div>
-        </form>
+        </div>
+
+
 
 
         <!-- FIM FILTROS -->
 
-        <section class="table bootstrap-iso" id="table">
+        <section class="table bootstrap-iso" id="table" style="font-weight: 400;">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -170,7 +172,7 @@ $ano_atual = date('Y');
 
                     $pag = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
 
-                    $sql = "SELECT * FROM `$ano_atual` ORDER BY data_vacina DESC";
+                    $sql = "SELECT * FROM animais ORDER BY especie, data_vacina ASC";
                     $buscar = mysqli_query($conexao, $sql);
 
                     /** Variável que vai definir quantos registros por página = 20 */
@@ -205,8 +207,8 @@ $ano_atual = date('Y');
                         $reproducao = $loop['reproducao'];
 
                     ?>
-                        <tr onclick="location.href='editar-especie.php?id=<?= $id ?>&ano=<?= $ano_atual ?>'" class="link-table">
-                            <th scope="row"> <?= $especie ?> </th>
+                        <tr onclick="location.href='editar-especie.php?id=<?= $id ?>&ref_animal=<?= $ref_animal ?>'" class="link-table">
+                            <th> <?= $especie ?> </th>
                             <td> <?= $ref_animal ?> </td>
                             <td> <?= $vacina ?> </td>
                             <td> <?= $data_vacina_convert ?> </td>
@@ -257,6 +259,7 @@ $ano_atual = date('Y');
             </div>
 
             <div class="total_registros">Registros encontrados: <?= $total_registros ?></div>
+            
         </section>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>

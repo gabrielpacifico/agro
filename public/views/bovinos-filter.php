@@ -2,13 +2,6 @@
 include_once('../include/connect.php');
 $ano = $_GET['ano'];
 
-$ano_atual = date('Y');
-
-if($ano_atual == $ano){
-    $ano_pesquisado = $ano_atual;
-}else{
-    $ano_pesquisado = $ano;
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -46,7 +39,6 @@ if($ano_atual == $ano){
     <div class="caprinos">
         <h1 class="title-cap"> Informações de todos os <strong>Bovinos</strong></h1>
     </div>
-    <h2 class="subtitle-cap">Ano de <?= $ano_pesquisado ?></h2>
 
     <a href="bovinos.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
 
@@ -91,9 +83,12 @@ if($ano_atual == $ano){
 
                 <?php
 
+                $dateStart = $ano . '-01-01';
+                $dateEnd = $ano . '-12-31';
+
                 $pag = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
 
-                $sql = "SELECT * FROM `$ano_pesquisado` WHERE especie = 'Bovinos'";
+                $sql = "SELECT * FROM animais WHERE (especie = 'Bovinos' AND data_vacina BETWEEN '$dateStart' AND '$dateEnd') ORDER BY data_vacina ASC";
                 $buscar = mysqli_query($conexao, $sql);
 
 
@@ -129,7 +124,7 @@ if($ano_atual == $ano){
                     $reproducao = $loop['reproducao'];
 
                 ?>
-                    <tr onclick="location.href='info-bovino.php?id=<?= $id ?>&ano=<?= $ano_pesquisado?>'" class="link-table">
+                    <tr onclick="location.href='info-bovino.php?id=<?= $id ?>&ref_animal=<?= $ref_animal?>'" class="link-table">
                         <th scope="row"> <?= $especie ?> </th>
                         <td> <?= $ref_animal ?> </td>
                         <td> <?= $vacina ?> </td>

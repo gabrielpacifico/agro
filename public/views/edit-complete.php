@@ -241,7 +241,7 @@ if (!isset($_SESSION['usuario'])) {
 
         // <- FIM DA VERIFICAÇÃO
 
-        $editsql = "UPDATE `$year_table` 
+        $editsql = "UPDATE animais
         SET 
         especie = '$especie',
         ref_animal = '$ref_animal',

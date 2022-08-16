@@ -2,13 +2,6 @@
 include_once('../include/connect.php');
 $ano = $_GET['ano'];
 
-$ano_atual = date('Y');
-
-if($ano_atual == $ano){
-    $ano_pesquisado = $ano_atual;
-}else{
-    $ano_pesquisado = $ano;
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -20,7 +13,7 @@ if($ano_atual == $ano){
     <title>Rebanho de ovinos</title>
     <link rel="icon" type="image/x-icon" href="../img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="../bootstrap/bootstrap-iso.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/caprinos.css">
@@ -46,7 +39,6 @@ if($ano_atual == $ano){
     <div class="caprinos">
         <h1 class="title-cap"> Informações de todos os <strong>ovinos</strong></h1>
     </div>
-    <h2 class="subtitle-cap">Ano de <?= $ano_pesquisado ?></h2>
 
     <a href="ovinos.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
 
@@ -91,9 +83,12 @@ if($ano_atual == $ano){
 
                 <?php
 
+                $dateStart = $ano . '-01-01';
+                $dateEnd = $ano . '-12-31';
+
                 $pag = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
 
-                $sql = "SELECT * FROM `$ano_pesquisado` WHERE especie = 'Ovinos'";
+                $sql = "SELECT * FROM animais WHERE (especie = 'Ovinos' AND data_vacina BETWEEN '$dateStart' AND '$dateEnd') ORDER BY data_vacina ASC";
                 $buscar = mysqli_query($conexao, $sql);
 
 
@@ -129,16 +124,16 @@ if($ano_atual == $ano){
                     $reproducao = $loop['reproducao'];
 
                 ?>
-                    <tr onclick="location.href='info-caprino.php?id=<?= $id ?>&ano=<?= $ano_pesquisado ?>'" class="link-table">
+                    <tr onclick="location.href='info-ovino.php?id=<?= $id ?>&ref_animal=<?= $ref_animal ?>'" class="link-table">
                         <th scope="row"> <?= $especie ?> </th>
                         <td> <?= $ref_animal ?> </td>
                         <td> <?= $vacina ?> </td>
                         <td> <?= $data_vacina_convert ?> </td>
-                        <td> <?php if($reproducao == NULL){
-                            echo "Não reproduziu";
-                        }else{
-                            echo $reproducao . " filhotes";
-                        } ?> </td>
+                        <td> <?php if ($reproducao == NULL) {
+                                    echo "Não reproduziu";
+                                } else {
+                                    echo $reproducao . " filhotes";
+                                } ?> </td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -179,7 +174,7 @@ if($ano_atual == $ano){
                 <?php } ?>
             </ul>
         </div>
-        <div class="total_registros">Ovinos cadastrados: <?=$total_registros?></div>
+        <div class="total_registros">Ovinos cadastrados: <?= $total_registros ?></div>
 
     </section>
 

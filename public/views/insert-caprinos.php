@@ -261,7 +261,7 @@ if (!isset($_SESSION['usuario'])) {
             exit();
         } else {
 
-            $sqlcode = "INSERT INTO `$year_table` 
+            $sqlcode = "INSERT INTO animais 
         (`especie`, `ref_animal`, `sexo`, `vacina`, `data_vacina`, `vacina2`, `data_vacina2`, `vacina3`, `data_vacina3`, `vacina4`, `data_vacina4`,
          `vacina5`, `data_vacina5`, `vacina6`, `data_vacina6`, `vacina7`, `data_vacina7`, `vacina8`, `data_vacina8`, `reproducao`, `observacao`) 
         VALUES ('$especie', '$ref_animal', '$sexo', '$vacina1', '$date_vacina1', '$vacina2', '$date_vacina2', '$vacina3', '$date_vacina3', '$vacina4', '$date_vacina4', 

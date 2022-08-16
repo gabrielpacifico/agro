@@ -1,7 +1,6 @@
 <?php
 include_once('../include/connect.php');
-    
-$ano_atual = date('Y');
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -39,7 +38,6 @@ $ano_atual = date('Y');
     <div class="caprinos">
         <h1 class="title-cap"> Informações de todos os <strong>bovinos</strong></h1>
     </div>
-    <h2 class="subtitle-cap">Ano de <?= $ano_atual ?></h2>
 
     <a href="index.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
 
@@ -87,7 +85,7 @@ $ano_atual = date('Y');
 
                 $pag = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
 
-                $sql = "SELECT * FROM `$ano_atual` WHERE especie = 'Bovinos'";
+                $sql = "SELECT * FROM animais WHERE especie = 'Bovinos' ORDER BY data_vacina ASC";
                 $buscar = mysqli_query($conexao, $sql);
 
                 /** Variável que vai definir quantos registros por página = 20 */
@@ -122,7 +120,7 @@ $ano_atual = date('Y');
                     $reproducao = $loop['reproducao'];
 
                 ?>
-                    <tr onclick="location.href='info-bovino.php?id=<?= $id ?>&ano=<?=$ano_atual?>'" class="link-table">
+                    <tr onclick="location.href='info-bovino.php?id=<?= $id ?>&ref_animal=<?= $ref_animal ?>'" class="link-table">
                         <th scope="row"> <?= $especie ?> </th>
                         <td> <?= $ref_animal ?> </td>
                         <td> <?= $vacina ?> </td>

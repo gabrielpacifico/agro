@@ -2,7 +2,11 @@
     display: flex;
     margin-left: 50px;
     margin-top: 20px;
+    margin-bottom: 30px;
     align-items: center;
+}
+.filter{
+    margin-left: 20px;
 }
 .alert-edit{
     background: #ec4c07;
@@ -68,8 +72,4 @@
     border: 1px solid #1d1d1d;
     margin-left: 10px;
     cursor: pointer;
-}
-.ref-animal{
-    display: flex;
-    float: right;
 }

@@ -2,7 +2,7 @@
 include_once('../include/connect.php');
 
 $id = mysqli_real_escape_string($conexao, $_GET['id']);
-$ano = mysqli_real_escape_string($conexao, $_GET['ano']);
+$ref_animal = mysqli_real_escape_string($conexao, $_GET['ref_animal']);
 
 ?>
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
 
     <?php
 
-    $sql = "SELECT * FROM `$ano` WHERE id = $id";
+    $sql = "SELECT * FROM animais WHERE id = $id";
     $res = mysqli_query($conexao, $sql);
 
     while ($array = mysqli_fetch_assoc($res)) {
@@ -80,7 +80,6 @@ $ano = mysqli_real_escape_string($conexao, $_GET['ano']);
     <div class="caprinos">
         <h1 class="title-cap"> Informações do(a) bovino <strong><?= $ref_animal ?></strong></h1>
     </div>
-    <h2 class="subtitle-cap">Ano de <?= $ano ?></h2>
 
     <a href="bovinos.php" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i></a>
 
