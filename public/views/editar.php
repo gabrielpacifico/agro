@@ -119,7 +119,7 @@ if (!isset($_SESSION['usuario'])) {
         <!-- FILTROS DE ANO E ESPÉCIE -->
         <form action="buscar-ref.php" method="GET">
             <div class="filters-edit">
-                <span class="filter-span">Ref. Animal: </span>
+                <span class="filter-span">Pesquisar por: </span>
                 <input type="text" placeholder="Ref. Animal" name="ref_animal" class="options2" autocomplete="off">
                 <button type="submit" class="btn-green">Pesquisar</button>
         </form>
@@ -261,6 +261,7 @@ if (!isset($_SESSION['usuario'])) {
             <div class="total_registros">Registros encontrados: <?= $total_registros ?></div>
             
         </section>
+    </section>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 

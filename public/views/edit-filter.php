@@ -10,17 +10,7 @@ $usuario = $_SESSION['usuario'];
 if (!isset($_SESSION['usuario'])) {
     header('Location: login.php');
 }
-$ano_atual = date('Y');
 
-if (empty($ano)) {
-    $ano = $ano_atual;
-}
-
-if ($ano_atual == $ano) {
-    $ano_pesquisado = $ano_atual;
-} else {
-    $ano_pesquisado = $ano;
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt=BR">
@@ -119,6 +109,9 @@ if ($ano_atual == $ano) {
 
         <?php
 
+        $dateStart = $ano . '-01-01';
+        $dateEnd = $ano . '-12-31';
+
         if (empty($ano) && empty($especie)) {
             header('Location: editar.php');
             $_SESSION['blank-spaces'] = true;
@@ -128,7 +121,7 @@ if ($ano_atual == $ano) {
             $pag = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
 
             if (empty($especie)) {
-                $change_sql = "SELECT * FROM `$ano_pesquisado` ORDER BY data_vacina DESC";
+                $change_sql = "SELECT * FROM animais WHERE (data_vacina BETWEEN '$dateStart' AND '$dateEnd') ORDER BY data_vacina ASC";
                 $buscar = mysqli_query($conexao, $change_sql) or die(mysqli_error($conexao));
 
                 /** Variável que vai definir quantos registros por página = 20 */
@@ -152,8 +145,35 @@ if ($ano_atual == $ano) {
 
                 /** Vai definir o limite de registros que irão ser exibidos */
                 $limite = mysqli_query($conexao, "$change_sql LIMIT $inicio, $reg_por_pag");
+
+            }elseif(empty($ano)) {
+                $change_sql = "SELECT * FROM animais WHERE especie = '$especie' ORDER BY data_vacina ASC";
+                $buscar = mysqli_query($conexao, $change_sql) or die(mysqli_error($conexao));
+
+                /** Variável que vai definir quantos registros por página = 20 */
+                $reg_por_pag = "30";
+
+                $total_registros = mysqli_num_rows($buscar);
+                $total_paginas = ceil($total_registros / $reg_por_pag);
+
+                /** Define a página que sempre vai começar sendo exibida, no caso sempre a primeira */
+                $inicio = ($reg_por_pag * $pag) - $reg_por_pag;
+
+                $links_laterais = 5;
+
+                // variáveis para o loop
+                $inicio2 = $pag - $links_laterais;
+                $limite2 = $pag + $links_laterais;
+
+                /** Variáveis para os botões de próximo e anterior */
+                $anterior = $pag - 1;
+                $proximo = $pag + 1;
+
+                /** Vai definir o limite de registros que irão ser exibidos */
+                $limite = mysqli_query($conexao, "$change_sql LIMIT $inicio, $reg_por_pag");
+
             } else {
-                $sql = "SELECT * FROM `$ano_pesquisado` WHERE especie = '$especie' ORDER BY data_vacina DESC";
+                $sql = "SELECT * FROM animais WHERE (especie = '$especie' AND data_vacina BETWEEN '$dateStart' AND '$dateEnd') ORDER BY data_vacina ASC";
                 $buscar = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
                 /** Variável que vai definir quantos registros por página = 20 */
@@ -182,7 +202,7 @@ if ($ano_atual == $ano) {
 
         ?>
 
-        <div class="text">Edição <i class="fa-solid fa-magnifying-glass"></i> <strong> <?= $especie ?> - <?= $ano_pesquisado ?></strong> </div><br>
+        <div class="text">Edição <i class="fa-solid fa-magnifying-glass"></i> <strong> <?= $especie ?> | <?= $ano ?></strong> </div><br>
 
         <section class="table bootstrap-iso" id="table">
             <table class="table table-hover">
